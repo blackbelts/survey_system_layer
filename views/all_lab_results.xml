@@ -1,0 +1,121 @@
+<odoo>
+    <record id="all_lab_results_form_view" model="ir.ui.view">
+        <field name="name">all.lab.results.form.view</field>
+        <field name="model">all.lab.results</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <group>
+                    <group>
+                        <field name="lab_code"/>
+                        <field name="hospital_name"/>
+                        <field name="branch_name"/>
+                        <field name="culture_name"/>
+                        <field name="location_name"/>
+                        <field name="patient_no"/>
+                        <field name="lab_no"/>
+                        <field name="barcode"/>
+                        <field name="gender"/>
+                    </group>
+                    <group>
+                        <field name="age_years"/>
+                        <field name="age_months"/>
+                        <field name="age_days"/>
+                        <field name="sample_type"/>
+                        <field name="reg_date"/>
+                        <field name="collection_date"/>
+                        <field name="reviewed_date"/>
+                        <field name="colony_count"/>
+                        <field name="isolate_number"/>
+                        <field name="organism_name"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Antibiotic Details">
+                        <group>
+                            <field name="anti_details_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="antibiotic_name"/>
+                                    <field name="result"/>
+                                    <field name="method"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record id="all_lab_results_tree_view" model="ir.ui.view">
+        <field name="name">all.lab.results.tree.view</field>
+        <field name="model">all.lab.results</field>
+        <field name="arch" type="xml">
+            <tree string="All Lab Results" sample="1">
+                <field name="lab_code"/>
+                <field name="hospital_name"/>
+                <field name="branch_name"/>
+                <field name="culture_name"/>
+                <field name="location_name"/>
+                <field name="patient_no"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="all_lab_results_search_view" model="ir.ui.view">
+        <field name="name">all.lab.results.search.view</field>
+        <field name="model">all.lab.results</field>
+        <field name="arch" type="xml">
+            <search string="Search Lab Results">
+                <field name="lab_code"/>
+                <field name="hospital_name"/>
+                <field name="branch_name"/>
+                <field name="culture_name"/>
+                <field name="location_name"/>
+                <field name="patient_no"/>
+                <field name="lab_no"/>
+                <field name="barcode"/>
+                <field name="gender"/>
+                <field name="sample_type"/>
+                <field name="reg_date"/>
+                <field name="collection_date"/>
+                <field name="reviewed_date"/>
+                <field name="colony_count"/>
+                <field name="isolate_number"/>
+                <field name="organism_name"/>
+                <filter string="Isolate is Set" name="isolate_is_set" domain="[('isolate_number','!=','')]"/>
+                <filter string="Isolate not Set" name="isolate_not_set" domain="[('isolate_number','=',False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Hospital" name="hospital_name" domain="[]"
+                            context="{'group_by': 'hospital_name'}"/>
+                    <filter string="Lab Name" name="branch_name" domain="[]"
+                            context="{'group_by': 'branch_name'}"/>
+                    <filter string="Culture Name" name="culture_name" domain="[]"
+                            context="{'group_by': 'culture_name'}"/>
+                    <filter string="Location Name" name="location_name" domain="[]"
+                            context="{'group_by': 'location_name'}"/>
+                    <filter string="Gender" name="gender" domain="[]"
+                            context="{'group_by': 'gender'}"/>
+                    <filter string="Sample Type" name="sample_type" domain="[]"
+                            context="{'group_by': 'sample_type'}"/>
+                    <filter string="REG Date" name="reg_date" domain="[]"
+                            context="{'group_by': 'reg_date'}"/>
+                    <filter string="Collection Date" name="collection_date" domain="[]"
+                            context="{'group_by': 'collection_date'}"/>
+                    <filter string="Reviewed Date" name="reviewed_date" domain="[]"
+                            context="{'group_by': 'reviewed_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="all_lab_results_action" model="ir.actions.act_window">
+        <field name="name">All Lab Results</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">all.lab.results</field>
+        <field name="view_mode">tree,form,pivot</field>
+    </record>
+
+    <menuitem id="all_lab_results_menu_item" name="All Lab Results"
+              parent="survey_system.Lab_menu_root_new" action="all_lab_results_action"
+              sequence="3"/>
+</odoo>

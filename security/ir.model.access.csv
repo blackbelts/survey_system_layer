@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_all_lab_results,all.lab.results,model_all_lab_results,survey_system.lab_admin_group,1,1,1,1
+access_lab_result_details,lab.result.details,model_lab_result_details,survey_system.lab_admin_group,1,1,1,1
